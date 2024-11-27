@@ -1,0 +1,54 @@
+﻿@model IEnumerable<A4WebApp.Models.Book>
+
+@{
+    ViewBag.Title = "Список книг";
+}
+
+<h2>Список книг</h2>
+
+<p>
+    @Html.ActionLink("Добавить новую книгу", "Create")
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().YearPublished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Content)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.YearPublished)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => book.Content)
+                </td>
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = book.Id }) |
+                    @Html.ActionLink("Удалить", "Delete", new { id = book.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
